@@ -1,5 +1,5 @@
 print ("Welcome to Dolphin!")  
-print ("You have stolen a camel to make your way across the great red sea.")  
+print ("You have stolen a dolphin to make your way across the great red sea.")  
 print ("The natives of the nation Poon, want their dolphin back and are chasing you down! Survive your")  
 print ("sea trek and outswim the natives!")          
 
@@ -17,18 +17,18 @@ while not done:
     print ("A. Eat a fish")  
     print ("B. Ahead moderate speed.")  
     print ("C. Ahead full speed")  
-    print ("F. Stop for the night")      
-    print ("D. Status Check")
-    print ("E. Quit")
+    print ("D. Stop for the night")      
+    print ("E. Status Check")
+    print ("F. Quit")
     answer = input("")    
 
-    if answer == "E":
+    if answer == "F":
         done = True 
-    elif answer == "D":
+    elif answer == "E":
         print ("Miles traveled:", miles_traveled)
         print ("Fish in Fish Basket:", fish_Basket)
         print ("The Natives are", natives, "miles behind you!")
-    elif answer == "F":
+    elif answer == "D":
         Dolphin == 0
         natives = random.randrange(7, 14)
         print ("Dolphin is happy and is ready to go!")
