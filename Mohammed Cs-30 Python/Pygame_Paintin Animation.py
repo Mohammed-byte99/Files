@@ -44,7 +44,7 @@ pygame.display.set_caption("Mohammeds Beautiful Kite Painting")
 done = False
 clock = pygame.time.Clock()
 cloud_x = 100
- 
+cloud_x2 = 250
 # Loop as long as done == False
 while not done:
  
@@ -86,19 +86,25 @@ while not done:
     pygame.draw.ellipse(screen, YELLOW, [20, 20, 80, 80],  0)
     pygame.draw.ellipse(screen, BEIGE, [285, 330, 30, 30], 0)
 
-    for cloud_x in range (0, 400, 200): 
-        pygame.draw.ellipse(screen, WHITE,  [185+cloud_x, 40, 90, 50], 0)
-        pygame.draw.ellipse(screen, WHITE,  [245+cloud_x, 60, 50, 40], 0)
-        pygame.draw.ellipse(screen, WHITE,  [185+cloud_x, 70, 90, 50], 0)
-        pygame.draw.ellipse(screen, WHITE,  [165+cloud_x, 60, 50, 40], 0)
-    cloud_x += 5
-    
+    pygame.draw.ellipse(screen, WHITE,  [cloud_x, 40, 90, 50], 0)
+    pygame.draw.ellipse(screen, WHITE,  [cloud_x, 60, 90, 50], 0)
+    cloud_x += 1.5
 
     if cloud_x > 500:
     # Reset it just above the top
         y = random.randrange(-50, -10)
         cloud_x = y
-   
+
+    pygame.draw.ellipse(screen, WHITE,  [cloud_x2, 40, 90, 50], 0)
+    pygame.draw.ellipse(screen, WHITE,  [cloud_x2, 60, 90, 50], 0)
+    cloud_x2 += 1.5
+
+    if cloud_x2 > 500:
+    # Reset it just above the top
+        y = random.randrange(-50, -10)
+        cloud_x2 = y
+
+
     # This draws a triangle for roof, and for the  kite
     pygame.draw.polygon(screen, LPURPLE, ([100, 170], [25, 270], [175, 270], 0))
     pygame.draw.polygon(screen, BLUE, ([350,240], [390, 200], [310, 200], [350, 160], 0))
