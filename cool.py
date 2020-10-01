@@ -41,7 +41,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
       
         # Call the parent's constructor
-        super().__init__()
+        pygame.sprite.Sprite.__init__(self)
  
         # Set height, width
         self.image = pygame.Surface([15, 15])
@@ -134,7 +134,9 @@ while not done:
                 player.changespeed(0, 3)
             elif event.key == pygame.K_DOWN:
                 player.changespeed(0, -3)
- 
+    
+    all_sprites_list.update()
+    
     # See if the player block has collided with anything.
     blocks_hit_list = pygame.sprite.spritecollide(player, block_list, True)
  
