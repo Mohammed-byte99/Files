@@ -18,20 +18,31 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
 class Rectangle():
-    x = random.randrange(700)
-    y = random.randrange(500)
 
-    h = random.randrange (20,70)
-    w = random.randrange (20,70)
+    def __init__(self):
 
-    change_x = random.randrange (-3,3)
-    change_y = random.randrange (-3,3)
+        self.x = random.randrange(700)
+        self.y = random.randrange(500)
+
+        self.h = random.randrange(20,70)
+        self.w = random.randrange(20,70)
+
+        self.change_x = random.randrange(-3,3)
+        self.change_y = random.randrange(-3,3)
+
+        self.color = [225, 155, 5]
+
+    def draw(self, screen):
+        pygame.draw.rect(screen, self.color, [self.x, self.y, self.h, self.w], 0)
+
+    def move(self):
+        self.x += self.change_x
+        self.y += self.change_y
+
+class Ellipse(Rectangle):
     
     def draw(self, screen):
-        pygame.draw.rect(screen, GREEN, [self.x, self.y, self.h, self.w], 0)
-    def move(self):
-            self.x += self.change_x
-            self.y += self.change_y
+        pygame.draw.ellipse(screen, self.color, [self.x, self.y, self.h, self.w], 0)
 
 pygame.init()
  
@@ -47,9 +58,14 @@ done = False
 clock = pygame.time.Clock()
 
 my_list = []
-for x in range(10):
-        my_object = Rectangle()
-        my_list.append(my_object)
+for x in range(100):
+    my_list.append(Rectangle())
+    R = random.randrange(0, 256)
+    B = random.randrange(0, 256)
+    G = random.randrange(0, 256)
+    self.color = (R, B, G)
+for x in range(100):
+    my_list.append(Ellipse())
 
 
 # -------- Main Program Loop -----------
@@ -58,8 +74,7 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-            my_list
-
+          
     # --- Game logic should go here
  
     # --- Screen-clearing code goes here
@@ -72,9 +87,10 @@ while not done:
     screen.fill(BLACK)
  
     # --- Drawing code should go here
-    my_object.draw(screen)
-    my_object.move()
-      
+    for rect in my_list:
+        rect.draw(screen)
+        rect.move()
+    
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
